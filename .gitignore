@@ -1,0 +1,118 @@
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package trabajopractico;
+import trabajopractico.Plataforma;
+import java.awt.Color;
+import java.awt.Image;
+
+/**
+ *
+ * @author fcjoaquin
+ */
+public class Juego extends InterfaceJuego
+{
+  Plataforma ho;
+ 
+  private Entorno entorno; 
+  double caer=200.0;
+  double mover=130.0;
+  double moviendo_w=300.0;
+  double moviendo_d=450.0;
+  double XPLfija=130.0;
+  double YPLfija=130.0;
+  boolean salio=true;
+ Juego()
+ {
+ entorno = new Entorno (this,"seba puto",900,650);
+  ho = new Plataforma();
+ entorno.iniciar();
+
+}
+ public void tick()
+ {
+      
+    dibujar();
+ 
+ }
+ 
+ 
+ 
+
+public static void main (String[] args)    
+{
+ 
+
+Juego juego = new Juego();
+
+}
+void dibujar()
+{
+     if (mover>249)
+     {
+         salio=false;
+     }
+     if (mover <= moviendo_d+30 && mover >= moviendo_d-30 ||salio==true)
+     {
+         mover=mover+0.15;
+     }
+     else
+             {  
+                 caer=caer+1;
+             }
+     
+ entorno.dibujarLemong(mover,caer);
+ entorno.cambiarFont("Arial", 40, Color.green);
+ entorno.escribirTexto("WOLOLO", 385.0, 50.0);
+ entorno.dibujarRectangulo(XPLfija, YPLfija, 200.0, 50.0, 0.0, Color.blue);
+  entorno.dibujarRectangulo(XPLfija, YPLfija+200, 200.0, 50.0, 0.0, Color.blue);
+  entorno.dibujarRectangulo(XPLfija, YPLfija+400, 200.0, 50.0, 0.0, Color.blue);
+  entorno.dibujarRectangulo(moviendo_d,moviendo_w,200.0,50.0,0.0,Color.blue);
+   if (entorno.estaPresionada('s'))
+  {
+      moviendo_w=moviendo_w+1.5;
+  }
+    if (entorno.estaPresionada('w'))
+  {
+      moviendo_w=moviendo_w-1.5;
+  }
+   if (entorno.estaPresionada('d'))
+   {
+        moviendo_d=moviendo_d+1.5;
+   }
+   if (entorno.estaPresionada('a'))
+   {
+        moviendo_d=moviendo_d-1.5;
+   {
+        moviendo_d=moviendo_d-1.5;
+   }
+   }
+   
+   
+  
+}
+}
